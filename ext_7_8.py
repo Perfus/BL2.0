@@ -5,15 +5,10 @@ import numpy as np
 import pandas as pd
 import math
 import matplotlib.pyplot as plt
-from matplotlib import patches
-from matplotlib.lines import Line2D
-from scipy import integrate
-import scipy.stats as ss
 import scikit_posthocs as scihoc
 import seaborn as sns
 
 from os import listdir
-from re import search
 
 exp_name = '' # Insert here ID of experiment
 path = f'/{exp_name}/{exp_name}/' # Insert here path to raw data
