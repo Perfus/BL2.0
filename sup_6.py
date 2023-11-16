@@ -8,8 +8,8 @@ import seaborn as sns
 
 from scipy.optimize import minimize, curve_fit
 
-exp_name = '' # ID of experiment
-path_raw = f'/{exp_name}/{exp_name} raw data/' # path to raw data
+exp_name = '' # Insert here ID of experiment
+path_raw = f'/{exp_name}/{exp_name} raw data/' # Insert here path to raw data
 
 colors_ = ['darkblue',
           'darkgreen',
@@ -58,7 +58,7 @@ def plate_process(filename,  anno_dict):
 def v(s, v_max, k_m):
   return (v_max * s) / (k_m + s)
 
-anno_dict = pd.read_excel('') # Path to file with wells-to-names mapping
+anno_dict = pd.read_excel('') # Insert here path to file with wells-to-names mapping
 
 filelist = [x for x in os.listdir(path_raw) if 'part' in x]
 ppas_data = pd.DataFrame()
@@ -76,9 +76,9 @@ ppas_data = pd.concat([time, ppas_data])
 ppas_data.to_csv(f'{path_raw}{exp_name}_data.csv')
 
 
-anno_dict_hibit = pd.read_excel('') # Path to file with wells-to-names mapping of HiBit data file
+anno_dict_hibit = pd.read_excel('') # Insert here path to file with wells-to-names mapping of HiBit data file
 
-data_hibit = plate_process('', # Path to file HiBit values
+data_hibit = plate_process('', # Insert here path to file HiBit values
                           anno_dict_hibit)
 
 data_hibit = data_hibit[data_hibit.columns[:41].tolist() + ['Label', 'ppas']] # 41 frames is the first20 minutes of HiBit data collecting
@@ -147,7 +147,7 @@ ax.tick_params(axis = 'both', labelsize = 12)
 sns.despine(offset=10, trim=False, ax = ax)
 plt.suptitle(r'$\it{Pichia}$' + ' ' + r'$\it{pastoris}$' + f', lysates', fontsize = title_size)
 
-plt.savefig('', #Path to figure to save
+plt.savefig('', # Insert here path for figure to save
             dpi = 400,
             bbox_inches='tight',
             transparent=False,
