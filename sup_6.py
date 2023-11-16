@@ -9,7 +9,7 @@ import seaborn as sns
 from scipy.optimize import minimize, curve_fit
 
 exp_name = '' # ID of experiment
-path_raw = f'/{exp_name}/{exp_name} raw data' # path to raw data
+path_raw = f'/{exp_name}/{exp_name} raw data/' # path to raw data
 
 colors_ = ['darkblue',
           'darkgreen',
