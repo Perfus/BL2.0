@@ -287,7 +287,7 @@ whiskerprops = {'color': 'black'}
 boxprops = {'edgecolor': 'black'}
 
 selected = [] # List of plasmids to be considered on the plot
-dil = # selected OD, if there are several options
+dil = # selected OD of agrocombinations, if there are several options
 
 data_ = data[(data.OD == dil) & (data.label.isin(selected))]
 fig, axes = plt.subplots(1, 2, figsize = (19, 8))
