@@ -1,4 +1,4 @@
-# This code was used for processing and plotting data from plant leaves captured by Sony Alpha ILCE-7M3 camera (Extended Data 1b, 2, 9d, Supplementary 10ac, 11)
+# This code was used for processing and plotting data from plant leaves captured by Sony Alpha ILCE-7M3 camera (Extended Data 1b, 2ab, 9d, Supplementary 10ac, 11)
 
 import string
 import numpy as np
