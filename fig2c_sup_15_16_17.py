@@ -42,9 +42,8 @@ for index_, file in enumerate(chosel):
   new_data = pd.read_csv(f'{path}/_{file}.csv', delimiter = ';', decimal = ',', usecols=['Avg Radiance [p/s/cm?/sr]', 'Line']) # Insert here common name of group
 
   # Background subtracting
-  bg_mean = new_data[new_data.Line == 'bg']['Avg Radiance [p/s/cm?/sr]'].mean()
-  bg_std = new_data[new_data.Line == 'bg']['Avg Radiance [p/s/cm?/sr]'].std()
-  bg = bg_mean - 3 * bg_std
+  bg  = new_data[new_data.Line == 'bg']['Avg Radiance [p/s/cm?/sr]'].mean()
+
   for index, row in new_data.iterrows():
     new_data['Avg Radiance [p/s/cm?/sr]'].loc[index] -= bg
 
