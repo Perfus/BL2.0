@@ -1,4 +1,4 @@
-### This code with some filereading alterations was used for processing data captured on Sony Alpha ILCE-7M3 camera (Figure 2a, 2b, 2d, )
+### This code with some filereading alterations was used for processing data captured on Sony Alpha ILCE-7M3 camera (Figure 2a, 2b, 2d, Extended Data Figure 5a, )
 
 import numpy as np
 import pandas as pd
@@ -85,7 +85,7 @@ ax2.tick_params(axis = 'x', labelsize = xticklabel_size)
 # Example of statistical annotation from Figure 2b
 # statistical annotation
 x1, x2 = 0, 1
-y, h, col = 2.3, 0.2, 'white'
+y, h, col = 1.3, 0.2, 'white'
 ax2.plot([x1, x1, x2, x2], [y, y-h, y-h, y], lw=1.5, c=col)
 p_value = f'{round(np.divide(data_selected[data_selected["group"] == "pNK497"]["Mean"].mean(), data_selected[data_selected["group"] == "pX037"]["Mean"].mean()) ,1)}-fold\n \
 {stat_rounder(mann_whitney_test["pNK497"]["pX037"])}'
