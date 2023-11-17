@@ -1,4 +1,4 @@
-# This code was used for processing and plotting data from IVIS (Figure 2c, Supplementary 15, 16, 17 ...)
+# This code was used for processing and plotting data from IVIS (Figure 2c, Supplementary 15, 16, 17)
 
 import numpy as np
 import pandas as pd
