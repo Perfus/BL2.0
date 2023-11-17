@@ -1,4 +1,4 @@
-# This code was used for processing and plotting data from IVIS (Supplementary 15, 16 ...)
+# This code was used for processing and plotting data from IVIS (Figure 2c, Supplementary 15, 16, 17 ...)
 
 import numpy as np
 import pandas as pd
@@ -62,7 +62,7 @@ for index_, file in enumerate(chosel):
     new_data = new_data[~new_data.Line.isin(['nb021_L'])]
 
   data = pd.concat([data, new_data], axis = 0, ignore_index = True)
-data['group'] = data.apply(lambda row: group(row['Line'].split('_')[0].upper()), axis = 1)
+data['FBP'] = data.apply(lambda row: group(row['Line'].split('_')[0].upper()), axis = 1)
 data = data[data.group.isin(selected)]
 
 mann_whitney_test = scihoc.posthoc_mannwhitney(leaves, val_col = 'Avg Radiance [p/s/cm?/sr]', group_col = 'group', p_adjust = 'holm-sidak')
@@ -73,7 +73,7 @@ fig, axes = plt.subplots(1, 2 figsize = (18, 8))
 sorting_order = data.groupby('group').median().sort_values('Avg Radiance [p/s/cm?/sr]', ascending = True).index.values
 ax3 = axes[0]
 sns.boxplot(data=data,
-            x='group',
+            x='FBP',
             y='Avg Radiance [p/s/cm?/sr]',
             color = 'white',
             order = sorting_order,
@@ -99,13 +99,22 @@ ax3.set_xticklabels(labels = [FBP[x] for x in sorting_order])
 ax3.tick_params(axis = 'y', labelsize = yticklabel_size)
 ax3.tick_params(axis = 'x', labelsize = xticklabel_size)
 
+# Example of statistical annotation from Supplementary Figure 17
+# statistical annotation
+x1, x2 = 0, 1
+y, h, col = 3000000, 400000, 'k'
+ax3.plot([x1, x1, x2, x2], [y, y-h, y-h, y], lw=1.5, c=col)
+p_value = str(round(np.divide(data[data["FBP"] == r"$\bf{FBP2}$" + "\nnnHispS\nnnH3H v2\nnnLuz v4\nnnCPH\nNpgA"]["Avg Radiance [p/s/cm?/sr]"].mean(), data[data["FBP"] == r"$\bf{FBP1}$" + "\nnnHispS\nnnH3H WT\nnnLuz WT\nnnCPH"]["Avg Radiance [p/s/cm?/sr]"].mean()) ,1))+'-fold\n \
+'+stat_rounder(mann_whitney_test[r"$\bf{FBP2}$" + "\nnnHispS\nnnH3H v2\nnnLuz v4\nnnCPH\nNpgA"][r"$\bf{FBP1}$" + "\nnnHispS\nnnH3H WT\nnnLuz WT\nnnCPH"])
+ax3.text((x1+x2)*.5, y-5*h, p_value, ha='center', va='bottom', fontsize = 18)
+ax3.set_ylim(800000)
 
 ax4 = axes[1]
 ########### <><><><><><><><>< STATS
 
 q1 = data.copy()
 q1['datapoint']=q1['Avg Radiance [p/s/cm?/sr]'].apply(float)
-q1['name'] = q1.apply(lambda row: fbp[row['group']], axis = 1)
+q1['name'] = q1.apply(lambda row: fbp[row['FBP']], axis = 1)
 
 data_stat = [q1.loc[ids, 'datapoint'].values for ids in q1.groupby('group').groups.values()]
 H, p = ss.kruskal(*data_stat)
