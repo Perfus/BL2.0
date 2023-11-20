@@ -1,4 +1,4 @@
-### This code with was used for processing data from full plants captured on Sony Alpha ILCE-7M3 camera (Supplementary Figure 14b, 19cd)
+### This code was used for processing data from full plants captured on Sony Alpha ILCE-7M3 camera (Supplementary Figure 14b, 19cd)
 
 import numpy as np
 import pandas as pd
