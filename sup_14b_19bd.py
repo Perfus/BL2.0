@@ -157,7 +157,6 @@ for file in filelist:
   data = data[data.Line != 'bg']
   data['plasmid'] = data.apply(lambda row: FBP[group(row.Line.upper())], axis = 1)
   data['group'] = data.apply(lambda row: group(row.Line.upper()), axis = 1)
-  #data.to_csv(f'{path}{file.split(".csv")[0]}.csv')
   full = pd.concat([full, data])
 full.to_csv('') # Insert here path for processed data to save
 
