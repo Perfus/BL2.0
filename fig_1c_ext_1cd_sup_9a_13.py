@@ -105,7 +105,7 @@ mann_whitney_test = scihoc.posthoc_mannwhitney(data, val_col = 'Sum_norm', group
 
 sns.boxplot(data=data,
             x='Label',
-            y='Sum_norm',
+            y='Sum_norm', # Or Sum for Integral luminescence, RLU
             color = 'white',
             order = sorting_order,
             medianprops = medianprops,
@@ -114,7 +114,7 @@ sns.boxplot(data=data,
             boxprops = boxprops,
             ax = ax)
 
-sns.swarmplot(data=data, x='Label', y='Sum_norm', hue = 'ppas', order = sorting_order, ax = ax)
+sns.swarmplot(data=data, x='Label', y='Sum_norm', hue = 'ppas', order = sorting_order, ax = ax) # Or Sum for Integral luminescence, RLU
 
 ax.set_yscale('log')
 ax.set_xlabel(None)
