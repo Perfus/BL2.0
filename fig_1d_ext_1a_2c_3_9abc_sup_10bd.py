@@ -257,7 +257,7 @@ label2 = r'$\bf{FBP2}$' + '\nnnHispS\nNpgA\nnnLuz v4\nnnCPH\nnnH3H v2'
 label1 = '\nnnHispS\n\nnnLuz v4\nnnCPH\nnnH3H v2'
 label0 = r'$\bf{FBP1}$' + '\nnnHispS\n\nnnLuz WT\nnnCPH\nnnH3H WT'
 
-dil = # selected OD of agrocombinations, if there are several options
+dil = # selected OD of agrocombinations, if there are several options, 0.5 in Figure 1 d, 0.6 in Supplementary Figure 10 d
 data_ = data_to_plot[(data_to_plot.Dilution == dil)]
 data_['Label'] = data_.apply(lambda row: get_label(row['Label for plotting (from AC)']), axis = 1)
 data_['Label'] = data_.apply(lambda row: FBP[row['Label']], axis = 1)
